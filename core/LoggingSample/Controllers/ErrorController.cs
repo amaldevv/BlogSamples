@@ -22,8 +22,9 @@ namespace LoggingSample.Controllers
         public IActionResult Error(int ErrorCode)
         {
             var moreInfo = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
-            _logger.LogInformation("Error occurred with Status Code : {StatusCode}, Original Path : {Original Path}",
-                ErrorCode, moreInfo.OriginalPath);
+           /* _logger.LogInformation("Error occurred with Status Code : {StatusCode}, Original Path : {Original Path}",
+                ErrorCode, moreInfo.OriginalPath);*/
+                _logger.LogInformation("Error occurred with Status Code : {StatusCode}",ErrorCode);
             return View(ErrorCode);
         }
     }
