@@ -39,6 +39,7 @@
 
   
  "tools": {
+    "BundlerMinifier.Core" : "2.0.238",
     "Microsoft.AspNetCore.Razor.Tools": {
       "version": "1.0.0-preview2-final",
       "imports": "portable-net45+win8+dnxcore50"
@@ -72,7 +73,9 @@
   },
 
   "scripts": {
-    "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ],
+    "precompile": ["dotnet bundle"],
+    "prepublish": [ "npm install", "bower install", "gulp clean"],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
 }
+ //"gulp min" 
