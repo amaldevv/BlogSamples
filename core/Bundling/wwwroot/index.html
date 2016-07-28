@@ -1,10 +1,22 @@
-  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+  
+<environment names="Development">
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="/css/site.min.css" />
+            
+            <script src="/lib/jquery/dist/jquery.js"></script>
+            <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="/js/site.min.js"></script>
+            
+</environment>
+<environment names="Staging,Production">
+   <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
             <link rel="stylesheet" href="/css/site.css" />
             <link rel="stylesheet" href="/css/custom.css" />
             <script src="/lib/jquery/dist/jquery.js"></script>
             <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
             <script src="/js/site.js"></script>
             <script src="/js/custom.js"></script>
+</environment>
 <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
