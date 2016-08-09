@@ -1,21 +1,11 @@
-aspcore1:
- build: .
- expose:
-  - 8018
-
-aspcore2:
- build: .
- expose:
-  - 8028
-
-
-aspcore3:
- build: .
- expose:
-  - 8038
-
-
-aspcore4:
- build: .
- expose:
-  - 8048
+aspcore1 :
+ build: ./dotnet
+ ports :
+  - "8018:8018"
+nginx:
+ build: ./nginx
+ 
+ links:
+   - aspcore1:aspcore1
+ ports :
+  - "8008:8008"
