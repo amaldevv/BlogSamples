@@ -2,10 +2,29 @@ aspcore1 :
  build: ./dotnet
  ports :
   - "8018:8018"
+
+aspcore2 :
+ build: ./dotnet
+ ports :
+  - "8028:8018"
+
+aspcore3 :
+ build: ./dotnet
+ ports :
+  - "8038:8018"
+
+aspcore4 :
+ build: ./dotnet
+ ports :
+  - "8048:8018"
+
 nginx:
  build: ./nginx
  
  links:
    - aspcore1:aspcore1
+   - aspcore2:aspcore2
+   - aspcore3:aspcore3
+   - aspcore4:aspcore4
  ports :
   - "8008:8008"
