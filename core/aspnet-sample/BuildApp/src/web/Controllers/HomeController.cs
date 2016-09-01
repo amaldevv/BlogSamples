@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Runtime.Serialization;
+using HelloCore.Models;
+
 
 namespace HelloCore.Controllers
 {
@@ -30,6 +35,26 @@ namespace HelloCore.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        public async Task<IActionResult> GetAPIDAtaAsync()
+        {
+            var retValue= new List<string>();
+            using(var client=new HttpClient())
+            {
+                 client.BaseAddress = new Uri("http://localhost:5000/");
+                 client.DefaultRequestHeaders.Accept.Clear();
+                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                 HttpResponseMessage response = await client.GetAsync("api/values")        ;
+                 if(response.IsSuccessStatusCode)
+                 {
+                     retValue = await response.Content.ReadAsAsync<List<string>>();
+
+                 }   
+
+            }
+            return View("ApiResult",retValue);
         }
     }
 }

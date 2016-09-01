@@ -1,0 +1,14 @@
+@model IEnumerable<string>
+@{
+    ViewData["Title"] = "Contact";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+<div>
+    @foreach(var item in Model)
+    {
+<span>@item</span>
+    }
+    
+    </div>
