@@ -1,0 +1,29 @@
+version : "2"
+ 
+services : 
+  webapp : 
+    
+    build :
+     context: ./src/web
+     dockerfile : webapp.dockerfile
+    container_name: build_webapp
+    env_file: ./src/web/env/app.${ASPNETCORE_ENVIRONMENT}.env
+    depends_on:
+     - restservice
+    ports :  
+     - "8018:8018"
+    networks:
+      - "buildapp_network"
+  restservice: 
+    build: 
+     context: ./src/service/RestAPI
+     dockerfile: service.dockerfile
+    container_name: build_service
+    
+    ports :  
+     - "8019:8019"
+    networks:
+      - "buildapp_network"
+networks:
+   buildapp_network:
+     driver: bridge
